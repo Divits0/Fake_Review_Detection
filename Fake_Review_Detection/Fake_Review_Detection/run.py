@@ -1,3 +1,4 @@
+#this is a comment
 import os
 os.system('del product_info.json')
 os.system('del seller_info.json')
