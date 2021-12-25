@@ -1,6 +1,4 @@
-#this is a comment
 import os
-from time import process_time_ns
 
 def scrape():
     os.system('del product_info.json')
