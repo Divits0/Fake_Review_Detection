@@ -2,6 +2,11 @@ import scrapy
 import re,json
 from csv import reader
 from ..items import SellerscraperItem
+import json
+
+with open("../config.json","r") as f:
+    pathfor = json.load(f)["pathfor"]
+    data_base = json.load(f)["data_base"]
 
 class SellerSpider(scrapy.Spider):
     name = 'seller_info'
@@ -9,7 +14,7 @@ class SellerSpider(scrapy.Spider):
     custom_settings = {
         'ITEM_PIPELINES': {'Fake_Review_Detection.pipelines.Sellerscraperpipeline': 300},
     }
-    with open(r'C:\Users\jaish\Desktop\Project\Fake_Review_Detection\product_info.json','r') as product_info:
+    with open(pathfor["product_info"],'r') as product_info:
 
         try:
             data = json.load(product_info)

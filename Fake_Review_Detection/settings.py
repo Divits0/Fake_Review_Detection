@@ -7,6 +7,12 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 import random
+import json
+
+with open("config.json","r") as f:
+    pathfor = json.load(f)["pathfor"]
+    data_base = json.load(f)["data_base"]
+
 BOT_NAME = 'Fake_Review_Detection'
 
 SPIDER_MODULES = ['Fake_Review_Detection.spiders']
@@ -16,7 +22,7 @@ NEWSPIDER_MODULE = 'Fake_Review_Detection.spiders'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
 user_agent_list=[]
-with open(r'C:\Users\jaish\Desktop\Project\Fake_Review_Detection\useragent.txt') as ulist:
+with open(pathfor["useragent"]) as ulist:
   for each in ulist:
     user_agent_list.append(each)
 USER_AGENT = random.choice(user_agent_list).strip()

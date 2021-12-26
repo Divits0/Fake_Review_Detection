@@ -1,6 +1,10 @@
 import scrapy,re
 from ..items import AmazonscraperItem
+import json
 
+with open("../config.json","r") as f:
+    pathfor = json.load(f)["pathfor"]
+    data_base = json.load(f)["data_base"]
 
 class ProductSpider(scrapy.Spider):
     name = "product_info"
@@ -8,7 +12,7 @@ class ProductSpider(scrapy.Spider):
     custom_settings = {
         'ITEM_PIPELINES': {'Fake_Review_Detection.pipelines.Productscraperpipeline': 300},
     }
-    with open(r'C:\Users\jaish\Desktop\Project\Fake_Review_Detection\url.txt') as urllist:
+    with open(pathfor["url.txt"]) as urllist:
         for url in urllist:
             start_urls.append(url)
        
