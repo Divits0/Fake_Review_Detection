@@ -1,11 +1,17 @@
 from flask import Flask,render_template,request
 from flask_pymongo import PyMongo
 import re
+from pymongo import database
 from run import scrape
+import json
 import os
 
+with open("config.json","r") as f:
+    pathfor = json.load(f)["pathfor"]
+    data_base = json.load(f)["data_base"]
+
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/Amazon_Data"
+app.config["MONGO_URI"] = data_base["URI"]
 mongo = PyMongo(app)
 
 
@@ -17,7 +23,7 @@ def get_asin(url):
     return asin_number
 
 def write_url(url):
-    with open(r'C:\Users\jaish\Desktop\Project\Fake_Review_Detection\url.txt','w') as urllist:
+    with open(pathfor["url.txt"],'w') as urllist:
         urllist.write(url)
 
 

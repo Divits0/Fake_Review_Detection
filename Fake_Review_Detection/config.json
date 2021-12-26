@@ -1,0 +1,15 @@
+{
+    "pathfor" :
+    {
+        "url.txt" : "C:\\Users\\Samyak\\Desktop\\Project\\Fake_Review_Detection\\url.txt",
+        "product_info" : "C:\\Users\\Samyak\\Desktop\\Project\\Fake_Review_Detection\\product_info.json",
+        "useragent" : "C:\\Users\\Samyak\\Desktop\\Project\\Fake_Review_Detection\\useragent.txt"
+    },
+    
+    "data_base" :
+    {
+        "URI" : "mongodb://localhost:27017/Amazon_Data",
+        "name" : "Amazon_Data"
+    }
+
+}
