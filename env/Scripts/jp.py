@@ -1,4 +1,4 @@
-#!c:\users\jaish\desktop\project\fake_review_detection\env\scripts\python.exe
+#!C:\Users\Samyak\Desktop\Project\Fake_Review_Detection\env\Scripts\python.exe
 
 import sys
 import json

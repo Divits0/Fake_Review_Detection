@@ -41,7 +41,8 @@ def get_url():
     else:
         print('hi')
         #os.system(r'cd C:\Users\jaish\Desktop\Project\Fake_Review_Detection\Fake_Review_Detection\Fake_Review_Detection')
-        scrape()
+        success = scrape()
+        print("____________ Scraped _____________ : ",success)
     return ""
     
 
