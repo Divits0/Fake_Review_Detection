@@ -1,9 +1,11 @@
 {
     "pathfor" :
     {
-        "url.txt" : "C:\\Users\\jaish\\Desktop\\Project\\Fake_Review_Detection\\url.txt",
-        "product_info" : "C:\\Users\\jaish\\Desktop\\Project\\Fake_Review_Detection\\product_info.json",
-        "useragent" : "C:\\Users\\jaish\\Desktop\\Project\\Fake_Review_Detection\\useragent.txt",
+        "url.txt" : "C:\\Users\\Samyak\\Desktop\\Project\\Fake_Review_Detection\\url.txt",
+        "product_info" : "C:\\Users\\Samyak\\Desktop\\Project\\Fake_Review_Detection\\product_info.json",
+        "seller_info" : "C:\\Users\\Samyak\\Desktop\\Project\\Fake_Review_Detection\\seller_info.json",
+        "review_info" : "C:\\Users\\Samyak\\Desktop\\Project\\Fake_Review_Detection\\review_info.json",
+        "useragent" : "C:\\Users\\Samyak\\Desktop\\Project\\Fake_Review_Detection\\useragent.txt",
         "db_URI" : "mongodb://localhost:27017/Amazon_Data",
         "db_name" : "Amazon_Data"
     
