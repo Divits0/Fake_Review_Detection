@@ -9,8 +9,9 @@ def scrape():
     os.system('touch review_info.json')
     try:
         os.system('scrapy crawl product_info -o product_info.json')
+        
     except:
-        print("___________________product")
+        print('__________________seller')
     try:
         os.system('scrapy crawl seller_info -o seller_info.json')
     except:

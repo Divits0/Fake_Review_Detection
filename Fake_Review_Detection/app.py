@@ -6,12 +6,12 @@ from run import scrape
 import json
 import os
 
-with open("config.json","r") as f:
+with open(os.getcwd()+'\Fake_Review_Detection\config.json',"r") as f:
     pathfor = json.load(f)["pathfor"]
-    data_base = json.load(f)["data_base"]
+
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = data_base["URI"]
+app.config["MONGO_URI"] = pathfor["db_URI"]
 mongo = PyMongo(app)
 
 

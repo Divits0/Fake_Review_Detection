@@ -2,11 +2,10 @@ import scrapy,re
 import json
 from word2number import w2n
 from ..items import ReviewscraperItem
-import json
+import os
 
-with open("../config.json","r") as f:
+with open(os.getcwd()+'\Fake_Review_Detection\config.json',"r") as f:
     pathfor = json.load(f)["pathfor"]
-    data_base = json.load(f)["data_base"]
 
 class ReviewSpider(scrapy.Spider):
     name = 'review_info'

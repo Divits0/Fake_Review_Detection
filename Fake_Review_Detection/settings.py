@@ -7,11 +7,10 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 import random
-import json
+import json,os
 
-with open("config.json","r") as f:
+with open(os.getcwd()+'\Fake_Review_Detection\config.json',"r") as f:
     pathfor = json.load(f)["pathfor"]
-    data_base = json.load(f)["data_base"]
 
 BOT_NAME = 'Fake_Review_Detection'
 
