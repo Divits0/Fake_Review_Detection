@@ -38,12 +38,13 @@ def get_url():
     print(result)
     if result is not None:
         print('inside if')
+        return "Already Scraped"
     else:
         print('hi')
         #os.system(r'cd C:\Users\jaish\Desktop\Project\Fake_Review_Detection\Fake_Review_Detection\Fake_Review_Detection')
         success = scrape()
         print("____________ Scraped _____________ : ",success)
-    return ""
+    return "scraped now"
     
 
 app.run(debug=True)
