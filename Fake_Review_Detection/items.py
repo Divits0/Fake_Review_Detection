@@ -5,6 +5,8 @@
 
 import scrapy
 
+from Fake_Review_Detection.run import scrape
+
 
 class AmazonscraperItem(scrapy.Item):
     # define the fields for your item here like:
@@ -32,6 +34,7 @@ class AmazonscraperItem(scrapy.Item):
     total_reviews = scrapy.Field()
     asin_number = scrapy.Field()
     review_page = scrapy.Field()
+    scraped_on = scrapy.Field()
 
 class SellerscraperItem(scrapy.Item):
     seller_id = scrapy.Field()

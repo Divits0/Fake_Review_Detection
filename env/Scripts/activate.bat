@@ -1,6 +1,6 @@
 @echo off
 
-set "VIRTUAL_ENV=C:\Users\Samyak\Desktop\Project\Fake_Review_Detection\env"
+set "VIRTUAL_ENV=C:\Users\jaish\Desktop\Project\Fake_Review_Detection\env"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

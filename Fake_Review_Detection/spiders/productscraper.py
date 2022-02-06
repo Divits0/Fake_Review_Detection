@@ -2,6 +2,7 @@ import scrapy,re
 from ..items import AmazonscraperItem
 import json
 import os
+from datetime import date
 
 with open(os.getcwd()+'\Fake_Review_Detection\config.json',"r") as f:
     pathfor = json.load(f)["pathfor"]
@@ -19,6 +20,7 @@ class ProductSpider(scrapy.Spider):
     def productparse2(self, response):
             items = AmazonscraperItem()
             ratings_reviews = response.css('div.a-row.a-spacing-base.a-size-base span::text').extract()
+            _date = str(date.today())
 
 
             # converting 6,840 global ratings | 1,755 global reviews to 6804,1755
@@ -45,6 +47,7 @@ class ProductSpider(scrapy.Spider):
             items["five"] = response.request.meta['five']
             items['asin_number'] = response.request.meta['asin_number']
             items['review_page'] = response.request.url
+            items['scraped_on'] = _date
 
             yield items
 
