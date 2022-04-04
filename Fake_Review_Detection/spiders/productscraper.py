@@ -25,7 +25,7 @@ class ProductSpider(scrapy.Spider):
 
             # converting 6,840 global ratings | 1,755 global reviews to 6804,1755
             ratings_reviews = ratings_reviews[0].strip()
-            ratings_reviews = ratings_reviews.split('|')
+            ratings_reviews = ratings_reviews.split(',')
             items['total_ratings'] = str(ratings_reviews[0].split()[0]).replace(',','')
             items['total_reviews'] = str(ratings_reviews[1].split()[0]).replace(',','')
             items["product_name"] = response.request.meta['product_name']
@@ -58,7 +58,11 @@ class ProductSpider(scrapy.Spider):
         brand = response.css('a#bylineInfo::text').extract()
         category = response.css('a.a-color-tertiary::text').extract()
         price = response.css('td.a-span12 span.a-size-medium ::text').extract()
+        if(len(price)==0):
+            price = response.css('span.a-price.a-text-price span.a-offscreen::text').extract()
         mrp = response.css('td.a-span12.a-color-secondary.a-size-base span.a-offscreen::text').extract()
+        if(len(mrp)==0):
+            mrp = response.css('span.a-price-whole::text').extract()
         policies = response.css('a.a-size-small.a-link-normal.a-text-normal::text').extract()
         fba = response.css('span.a-icon-text-fba::text').extract()
         seller_url = response.css('div#merchant-info a::attr("href")').extract()
