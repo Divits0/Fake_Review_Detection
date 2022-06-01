@@ -3,3 +3,29 @@ body {
     width: 400px;
     text-align: center;
 }
+
+.feedback-container{
+    position: fixed;
+    padding: auto;
+    bottom: 5%;
+    left: 25%;
+}
+
+.bi-hand-thumbs-up-fill,.bi-hand-thumbs-down-fill{
+    font-size: xx-large;
+    color: silver;
+}
+
+.bi:hover{
+    color: goldenrod;
+}
+
+.feedback-message{
+    display: none;
+    text-align: center;
+    padding-top: 50%;
+}
+
+.feedback-container{
+    display: none;
+}

@@ -26,6 +26,8 @@ def write_url(url):
     with open(pathfor["url.txt"],'w') as urllist:
         urllist.write(url)
 
+def get_output():
+    return "Output"
 
 @app.route("/get_url", methods = ['POST'])
 def get_url():
@@ -34,10 +36,14 @@ def get_url():
     write_url(url)
     asin_number = get_asin(url)
     product_colloection = mongo.db.product
+    review_collection = mongo.db.review
     result = product_colloection.find_one({'asin_number': asin_number})
-    print(result)
     if result is not None:
         print('inside if')
+        # result = review_collection.find({'asin_number': asin_number})
+        # for i in result:
+        #     print(i)
+        r = get_output()
         return "Already Scraped"
     else:
         print('hi')
@@ -45,7 +51,7 @@ def get_url():
         success = scrape()
         print("____________ Scraped _____________ : ",success)
         if success == False:
-            return 'Something went wrong.' 
+            return 'Something went wrong.'
     return "Data has been scraped."
     
 

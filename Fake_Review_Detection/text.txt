@@ -1,2 +1,5 @@
 response.css('li.a-disabled.a-last::text').extract()
 R19ZJACRA8XBW5
+
+price = response.css('span.a-price.a-text-price span.a-offscreen::text').extract()
+mrp = response.css('span.a-price-whole::text').extract()
