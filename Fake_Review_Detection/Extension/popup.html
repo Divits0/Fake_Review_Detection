@@ -8,12 +8,13 @@
 
   <body>
     <div class="chrome-extension">
+      <div class="parent-container">
         <h1>Fake Review Detection</h1>
-      <p id="p">Click to check the likelihood of fake reviews</p>
-      <button id ="submit-button" class="btn btn-primary btn-lg">Click</button>
-      
-      
-      <div class="feedback-container mt-5">
+        <p id="p">Click to check the likelihood of fake reviews</p>
+        <button id ="submit-button" class="btn btn-primary btn-lg">Click</button>
+      </div>
+      <div class="feedback-container">
+        <h1 id="result" class="pb-5"></h1>
         <h2>Was this helpful?</h2>
         <span ><i id="thumbs-up" class="bi bi-hand-thumbs-up-fill p-2"></i></span>
         <span><i id="thumbs-down" class="bi bi-hand-thumbs-down-fill p-2"></i></span>

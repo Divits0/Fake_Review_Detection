@@ -23,24 +23,24 @@ def scrape():
         print('__________________product')
         return False
     
-    try:
-        for i in range(3):
-            os.system('scrapy crawl seller_info -o seller_info.json')
-            if os.stat(pathfor["seller_info"]).st_size != 0:
-                break  
-        else:
-            return False   
-    except:
-        print('__________________seller')
-        return False
-    try:
-        for i in range(3):
-            os.system('scrapy crawl review_info -o review_info.json')
-            if os.stat(pathfor["review_info"]).st_size != 0:
-                break  
-        else:
-            return False   
-    except:
-        print('__________________review')
-        return False
+    # try:
+    #     for i in range(3):
+    #         os.system('scrapy crawl seller_info -o seller_info.json')
+    #         if os.stat(pathfor["seller_info"]).st_size != 0:
+    #             break  
+    #     else:
+    #         return False   
+    # except:
+    #     print('__________________seller')
+    #     return False
+    # try:
+    #     for i in range(3):
+    #         os.system('scrapy crawl review_info -o review_info.json')
+    #         if os.stat(pathfor["review_info"]).st_size != 0:
+    #             break  
+    #     else:
+    #         return False   
+    # except:
+    #     print('__________________review')
+    #     return False
     return True
