@@ -3,3 +3,12 @@ R19ZJACRA8XBW5
 
 price = response.css('span.a-price.a-text-price span.a-offscreen::text').extract()
 mrp = response.css('span.a-price-whole::text').extract()
+
+price = response.css('td.a-span12.a-color-secondary.a-size-base span.a-offscreen::text').extract()
+if(len(price)==0):
+    price = response.css('span.a-price-whole::text').extract()
+mrp = response.css('td.a-span12 span.a-size-medium ::text').extract()
+if(len(mrp)==0):
+    mrp = response.css('span.a-price.a-text-price span.a-offscreen::text').extract()
+
+    +'?|'+user_feedback

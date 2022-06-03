@@ -25,7 +25,7 @@ class ProductSpider(scrapy.Spider):
 
             # converting 6,840 global ratings | 1,755 global reviews to 6804,1755
             ratings_reviews = ratings_reviews[0].strip()
-            ratings_reviews = ratings_reviews.split(',')
+            ratings_reviews = ratings_reviews.split('|')
             items['total_ratings'] = str(ratings_reviews[0].split()[0]).replace(',','')
             items['total_reviews'] = str(ratings_reviews[1].split()[0]).replace(',','')
             items["product_name"] = response.request.meta['product_name']
@@ -59,22 +59,35 @@ class ProductSpider(scrapy.Spider):
         category = response.css('a.a-color-tertiary::text').extract()
         price = response.css('td.a-span12 span.a-size-medium ::text').extract()
         if(len(price)==0):
-            price = response.css('span.a-price.a-text-price span.a-offscreen::text').extract()
+            price = response.css('span.a-price span.a-price-whole::text').extract()
         mrp = response.css('td.a-span12.a-color-secondary.a-size-base span.a-offscreen::text').extract()
         if(len(mrp)==0):
-            mrp = response.css('span.a-price-whole::text').extract()
+            mrp = response.css('span.a-price.a-text-price span.a-offscreen::text').extract()
         policies = response.css('a.a-size-small.a-link-normal.a-text-normal::text').extract()
         fba = response.css('span.a-icon-text-fba::text').extract()
         seller_url = response.css('div#merchant-info a::attr("href")').extract()
         avg_rating = response.css('span.a-nowrap.a-size-base span.a-size-medium.a-color-base::text').extract()
-        pect_ratings = response.css('td.a-nowrap a.a-link-normal::text').extract()
+        pect_ratings = response.css('div.a-meter::attr("aria-valuenow")').extract()
 
         items['product_name'] = product_name[0].strip()
         items['brand'] = brand[0]
-        items['category'] = category[0].strip()
-        items['sub_category'] = category[-2].strip()
-        items['price'] = price[0][1:]
-        items['mrp'] = mrp[0].strip()[1:]
+        try:
+            items['category'] = category[0].strip()
+        except:
+            items['category'] = ""
+        try:
+            items['sub_category'] = category[-2].strip()
+        except:
+            items['sub_category'] = ""
+        if(price[0].strip()[0] == "₹"):
+            items['price'] = price[0].strip()[1:].replace(',','')
+        else:
+            items['price'] = price[0].strip().replace(',','')
+
+        if(mrp[0].strip()[0] == "₹"):
+            items['mrp'] = mrp[0].strip()[1:].replace(',','')
+        else:
+            items['mrp'] = mrp[0].strip().replace(',','')
         items['return_policy'] = 'No'
         items['warranty'] = 'No'
         items['cod'] = 'No'

@@ -4,12 +4,17 @@ body {
     text-align: center;
 }
 
-.feedback-container{
+.parent-container{
+    text-align: center;
+    padding-top: 50%;
+}
+
+/* .feedback-container{
     position: fixed;
     padding: auto;
     bottom: 5%;
     left: 25%;
-}
+} */
 
 .bi-hand-thumbs-up-fill,.bi-hand-thumbs-down-fill{
     font-size: xx-large;
@@ -28,4 +33,10 @@ body {
 
 .feedback-container{
     display: none;
+    text-align: center;
+    padding-top: 60%;
+}
+
+#result{
+    color: rgb(236, 140, 72);
 }
