@@ -51,23 +51,32 @@ def get_url():
     url = url.decode()
     write_url(url)
     global asin_number
-    asin_number = get_asin(url)
+    try:
+        asin_number = get_asin(url)
+    except:
+        return 'Please make sure the pre-requisites are met, otherwise try again later'
     product_colloection = mongo.db.product
     review_collection = mongo.db.review
     result = product_colloection.find_one({'asin_number': asin_number})
     print(asin_number, result,"---------------------------------------")
     if result is not None:
-        res = ml_model.calculate(asin_number)
-        return res
+        try:
+            res = ml_model.calculate(asin_number)
+            return res
+        except:
+            return 'Please make sure the pre-requisites are met, otherwise try again later'
     else:
         mongo.db['feedback'].insert_one({"asin_number":asin_number,"positive":0,"negative":0,"last_feedback":1, "prev_score": -1})
         #os.system(r'cd C:\Users\jaish\Desktop\Project\Fake_Review_Detection\Fake_Review_Detection\Fake_Review_Detection')
         success = scrape()
         print("____________ Scraped _____________ : ",success)
         if success == False:
-            return 'Something went wrong.'
-    res = ml_model.calculate(asin_number)
-    return res
+            return 'Please make sure the pre-requisites are met, otherwise try again later'
+    try:
+        res = ml_model.calculate(asin_number)
+        return res
+    except: 
+        return 'Please make sure the pre-requisites are met, otherwise try again later'
     
 
 app.run(debug=True)

@@ -117,4 +117,4 @@ def calculate(asin_number):
     elif accuracy > 45 and accuracy < 55:
         return "Moderately Likely to have Fake reviews"
     else:
-        return "Highly Likely to have Fake reviews"
+        return "More Likely to have Fake reviews"

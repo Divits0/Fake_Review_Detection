@@ -23,11 +23,18 @@ class ProductSpider(scrapy.Spider):
             _date = str(date.today())
 
 
-            # converting 6,840 global ratings | 1,755 global reviews to 6804,1755
-            ratings_reviews = ratings_reviews[0].strip()
-            ratings_reviews = ratings_reviews.split('|')
-            items['total_ratings'] = str(ratings_reviews[0].split()[0]).replace(',','')
-            items['total_reviews'] = str(ratings_reviews[1].split()[0]).replace(',','')
+            # converting 6,840 global ratings | 1,755 global reviews to 6804,1755 
+            try:
+                ratings_reviews = ratings_reviews[0].strip()
+                if "|" in ratings_reviews:
+                    ratings_reviews = ratings_reviews.split('|')
+                elif ", " in ratings_reviews:
+                    ratings_reviews = ratings_reviews.split(', ')
+                items['total_ratings'] = str(ratings_reviews[0].split()[0]).replace(',','')
+                items['total_reviews'] = str(ratings_reviews[1].split()[0]).replace(',','')
+            except:
+                items['total_ratings'] = "error"
+                items['total_reviews'] = "error"
             items["product_name"] = response.request.meta['product_name']
             items["brand"] = response.request.meta['brand']
             items["category"] = response.request.meta['category']

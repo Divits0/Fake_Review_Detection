@@ -6,15 +6,9 @@ body {
 
 .parent-container{
     text-align: center;
-    padding-top: 50%;
+    padding-top: 20%;
+    padding-bottom: 20%;
 }
-
-/* .feedback-container{
-    position: fixed;
-    padding: auto;
-    bottom: 5%;
-    left: 25%;
-} */
 
 .bi-hand-thumbs-up-fill,.bi-hand-thumbs-down-fill{
     font-size: xx-large;
