@@ -2,26 +2,29 @@ document.getElementById('submit-button').addEventListener('click',function(){
     var tab_url = getCurrentTab();
     tab_url.then(function(result){
         if(!result.startsWith('https://www.amazon.in/')){
-            document.getElementsByTagName('p')[0].innerHTML = "Not Amazon";
+            document.getElementsByTagName('p')[0].innerHTML = "You are not on Amazon! <br> <a href='https://www.amazon.in/' target='_blank' >Go to Amazon</a>";
         }
         else{
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (xhttp.readyState == XMLHttpRequest.DONE) {
-                if(xhttp.responseText == "Something went wrong."){
+                if(xhttp.responseText == "Please make sure the pre-requisites are met, otherwise try again later"){
                     document.getElementsByTagName('p')[0].innerHTML = xhttp.responseText;
-                    document.getElementById('submit-button').innerHTML = 'Click';
+                    document.getElementById('submit-button').innerHTML = 'Go!';
                 }
                 else{
                     if(xhttp.responseText == "Less Likely to have Fake reviews"){
                         document.getElementById('result').style.color = "#14C38E"; 
                     }
-                    else if(xhttp.responseText == "Highly Likely to have Fake reviews"){
+                    else if(xhttp.responseText == "More Likely to have Fake reviews"){
                         document.getElementById('result').style.color = "#F32424";
+                    }
+                    else if(xhttp.responseText == "Moderately Likely to have Fake reviews"){
+                        document.getElementById('result').style.color = "#0978BC";
                     }
                     document.getElementById('result').innerHTML = xhttp.responseText;
                     document.querySelector('.feedback-container').style.display = 'block';
-                    document.getElementById('submit-button').innerHTML = 'Click';
+                    document.getElementById('submit-button').innerHTML = 'Go!';
                     document.querySelector('.parent-container').style.display = 'none';
                 }
             }
